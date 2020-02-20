@@ -16,18 +16,14 @@ It currently supports:
 
 Via NPM:
 
-    npm install robots-parser
-
-or via Yarn:
-
-    yarn add robots-parser
+    npm install npm install --save https://github.com/menno120/robots-parser
 
 ## Usage
 
-```js
-var robotsParser = require('robots-parser');
+```ts
+import robotsParser from "robots-parser";
 
-var robots = robotsParser('http://www.example.com/robots.txt', [
+var robots = new Robots('http://www.example.com/robots.txt', [
 	'User-agent: *',
 	'Disallow: /dir/',
 	'Disallow: /test.html',
@@ -45,7 +41,6 @@ robots.getCrawlDelay('Sams-Bot/1.0'); // 1
 robots.getSitemaps(); // ['http://example.com/sitemap.xml']
 robots.getPreferedHost(); // example.com
 ```
-
 
 ### isAllowed(url, [ua])
 **boolean or undefined**
@@ -94,37 +89,6 @@ Returns the preferred host name specified by the `host:` directive or null if th
 
 
 # Changes
-
-### Version 2.1.1:
-
- * Fix bug that could be used to causing rule checking to take a long time
-   &ndash; Thanks to @andeanfog
-
-### Version 2.1.0:
-
- * Removed use of punycode module API's as new URL API handles it
- * Improved test coverage
- * Added tests for percent encoded paths and improved support
- * Added `getMatchingLineNumber()` method
- * Fixed bug with comments on same line as directive
-
-### Version 2.0.0:
-
-This release is not 100% backwards compatible as it now uses the new URL APIs which are not supported in Node < 7.
-
- * Update code to not use deprecated URL module API's.
-   &ndash; Thanks to @kdzwinel
-
-### Version 1.0.2:
-
- * Fixed error caused by invalid URLs missing the protocol.
-
-### Version 1.0.1:
-
- * Fixed bug with the "user-agent" rule being treated as case sensitive.
-   &ndash; Thanks to @brendonboshell
- * Improved test coverage.
-   &ndash; Thanks to @schornio
 
 ### Version 1.0.0:
 
